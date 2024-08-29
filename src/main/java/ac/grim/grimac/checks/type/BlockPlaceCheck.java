@@ -39,7 +39,7 @@ public class BlockPlaceCheck extends Check implements RotationCheck {
     }
 
     protected boolean shouldCancel() {
-        return cancelVL >= 0 && violations >= cancelVL;
+        return false;
     }
 
     static {
