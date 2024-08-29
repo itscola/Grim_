@@ -32,14 +32,14 @@ jobs:
       with:
         arguments: build
 
-    - name: List files in build/libs
-        run: ls -la build/libs
+     - name: List files in build/libs
+      run: ls -la build/libs
 
-    - name: Upload build artifacts1
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifacts
-          path: build/libs/*.jar  
+      - name: Upload build artifacts1
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: build/libs/*.jar  
 
     - name: Upload a Build Artifact2
       uses: actions/upload-artifact@v3.1.0
