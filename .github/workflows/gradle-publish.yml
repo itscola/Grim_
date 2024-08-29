@@ -12,7 +12,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -33,10 +32,10 @@ jobs:
       with:
         arguments: build
 
-     - name: List files in build/libs
+    - name: List files in build/libs
         run: ls -la build/libs
 
-      - name: Upload build artifacts1
+    - name: Upload build artifacts1
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
