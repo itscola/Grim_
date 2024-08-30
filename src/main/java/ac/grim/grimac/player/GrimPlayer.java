@@ -1,4 +1,5 @@
 package ac.grim.grimac.player;
+package ac.grim.grimac.player;
 
 import ac.grim.grimac.GrimAPI;
 import ac.grim.grimac.api.AbstractCheck;
@@ -201,11 +202,18 @@ public class GrimPlayer implements GrimUser {
     public MainSupportingBlockData mainSupportingBlockData = new MainSupportingBlockData(null, false);
 
     public void onPacketCancel() {
-        if (spamThreshold != -1 && cancelledPackets.incrementAndGet() > spamThreshold) {
+        if (spamThreshold != -1 && cancelledPackets.incrementAndGet() > spamThreshold && !isBot()) {
             LogUtil.info("Disconnecting " + getName() + " for spamming invalid packets, packets cancelled within a second " + cancelledPackets);
             disconnect(Component.translatable("disconnect.closed"));
             cancelledPackets.set(0);
         }
+    }
+
+    public boolean isBot() {
+        if (getName().startsWith("-")) {
+            return true;
+        }
+        return false;
     }
 
     public int totalFlyingPacketsSent;
@@ -416,7 +424,8 @@ public class GrimPlayer implements GrimUser {
     }
 
     public void timedOut() {
-        disconnect(Component.translatable("disconnect.timeout"));
+        if (!isBot())
+            disconnect(Component.translatable("disconnect.timeout"));
     }
 
     public void disconnect(Component reason) {
