@@ -1,5 +1,4 @@
 package ac.grim.grimac.player;
-package ac.grim.grimac.player;
 
 import ac.grim.grimac.GrimAPI;
 import ac.grim.grimac.api.AbstractCheck;
