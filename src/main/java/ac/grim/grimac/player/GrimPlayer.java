@@ -424,8 +424,9 @@ public class GrimPlayer implements GrimUser {
     }
 
     public void timedOut() {
-        if (!isBot())
+        if (!isBot()) {
             disconnect(Component.translatable("disconnect.timeout"));
+        }
     }
 
     public void disconnect(Component reason) {
